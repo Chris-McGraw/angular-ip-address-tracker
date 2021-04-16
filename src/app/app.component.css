@@ -1,0 +1,53 @@
+#app-container {
+  display: block;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#background-img-container {
+  display: flex;
+  justify-content: center;
+
+  z-index: 10;
+  position: relative;
+  top: 0;
+
+  width: 100%;
+  height: 280px;
+
+  background-image: url("/assets/images/pattern-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 8px 8px rgba(0,0,0, 0.15);
+}
+
+#main-header {
+  position: relative;
+  top: 32px;
+
+  font-family: "Rubik", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: white;
+}
+
+
+
+/* ------------------------ MEDIA QUERY WIDTH < 800 ------------------------ */
+@media screen and (max-width: 799px) {
+  #background-img-container {
+    height: 300px;
+  }
+
+  #main-header {
+    position: relative;
+    top: 28.8px;     /* 90% */
+
+    font-size: 27px; /* 90% */
+  }
+}

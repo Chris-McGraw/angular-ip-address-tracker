@@ -1,0 +1,15 @@
+#map-container {
+  z-index: 0;
+
+  width: 100%;
+  height: calc(100% - 280px); /* 100% minus background img container height */
+}
+
+
+
+/* ------------------------ MEDIA QUERY WIDTH < 800 ------------------------ */
+@media screen and (max-width: 799px) {
+  #map-container {
+    height: calc(100% - 300px); /* 100% minus background img container height */
+  }
+}

@@ -1,0 +1,71 @@
+#ip-search-container {
+  display: grid;
+  grid-template-columns: 1fr 58px;
+
+  position: absolute;
+  top: 95px;
+  left: 0;
+  right: 0;
+
+  width: 555px;
+  height: 58px;
+  margin: auto;
+}
+
+#ip-search-input {
+  height: 100%;
+  padding: 0 20px;
+
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: hsl(0, 0%, 17%);
+
+  background-color: white;
+  border-radius: 14px 0 0 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ip-search-input::placeholder {
+  color: hsl(0, 0%, 59%);
+  opacity: 1;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ip-search-input::-ms-input-placeholder {
+  color: hsl(0, 0%, 59%);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ip-search-button {
+  height: 100%;
+
+  background-color: black;
+  background-image: url("/assets/images/icon-arrow.svg");
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border-radius: 0 14px 14px 0;
+
+  cursor: pointer;
+}
+
+
+
+/* ------------------------ MEDIA QUERY WIDTH < 800 ------------------------ */
+@media screen and (max-width: 799px) {
+  #ip-search-container {
+    top: 85.5px;    /* 90% */
+
+    width: 327px;
+  }
+}
