@@ -13,16 +13,16 @@ export class IpSearchComponent implements OnInit {
   }
 
   constructor() {
-    this.nowLoading = false;
+    this.ipSearchLoading = false;
   }
 
-  @Input() nowLoading: boolean;
+  @Input() ipSearchLoading: boolean;
 
   @Output() startEmitTest: EventEmitter<boolean> = new EventEmitter();
 
   emitStart() {
-    this.nowLoading = true;
-    this.startEmitTest.emit(this.nowLoading);
+    this.ipSearchLoading = true;
+    this.startEmitTest.emit(this.ipSearchLoading);
   }
 
   ngOnInit(): void {

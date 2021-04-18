@@ -8,17 +8,17 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 export class IpInfoComponent implements OnInit, OnChanges {
 
   constructor() {
-    this.nowLoading = false;
+    this.ipSearchLoading = false;
   }
 
-  @Input() nowLoading: boolean;
+  @Input() ipSearchLoading: boolean;
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // for(let prop in changes) {
-    //   if(prop === 'nowLoading') {
+    //   if(prop === 'ipSearchLoading') {
     //     console.log('Previous:', changes[prop].previousValue);
     //     console.log('Current:', changes[prop].currentValue);
     //     console.log('firstChange:', changes[prop].firstChange);
