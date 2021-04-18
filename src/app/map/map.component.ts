@@ -7,15 +7,6 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-  // private map;
-  //
-  // private initMap(): void {
-  //   this.map = L.map('map', {
-  //     center: [ 39.8282, -98.5795 ],
-  //     zoom: 3
-  //   });
-  // }
-
   makeMap(): void {
     var map = L.map("map-container", {
       zoomControl: false
@@ -39,7 +30,6 @@ export class MapComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-    // this.initMap();
     this.makeMap();
   }
 

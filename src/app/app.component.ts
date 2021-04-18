@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular IP Address Tracker';
+  nowLoading:boolean = false;
+
+  startEmitTestHandler(nowLoading: boolean) {
+    this.nowLoading = nowLoading;
+  }
 }

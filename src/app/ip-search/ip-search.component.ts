@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-ip-search',
@@ -7,7 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IpSearchComponent implements OnInit {
 
-  constructor() { }
+  testClick() {
+    console.log("btn clicked");
+    this.emitStart();
+  }
+
+  constructor() {
+    this.nowLoading = false;
+  }
+
+  @Input() nowLoading: boolean;
+
+  @Output() startEmitTest: EventEmitter<boolean> = new EventEmitter();
+
+  emitStart() {
+    this.nowLoading = true;
+    this.startEmitTest.emit(this.nowLoading);
+  }
 
   ngOnInit(): void {
   }
