@@ -2,35 +2,31 @@
   <div id="ip-info-container-inner">
     <div class="ip-info-tile">
       <h2>IP Address</h2>
-      <div [ngSwitch]="ipSearchLoading">
-          <p *ngSwitchCase="true">192.212.174.101</p>
-          <p *ngSwitchCase="false">...</p>
-          <p *ngSwitchDefault?>n/a</p>
-      </div>
+
+      <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
+      <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
+      <p *ngIf="!ipSearchLoading && ipInfoReady">192.212.174.101</p>
     </div>
     <div class="ip-info-tile">
       <h2>Location</h2>
-      <div [ngSwitch]="ipSearchLoading">
-          <p *ngSwitchCase="true">Brooklyn, NY 10001</p>
-          <p *ngSwitchCase="false">...</p>
-          <p *ngSwitchDefault?>n/a</p>
-      </div>
+
+      <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
+      <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
+      <p *ngIf="!ipSearchLoading && ipInfoReady">Brooklyn, NY 10001</p>
     </div>
     <div class="ip-info-tile">
       <h2>Timezone</h2>
-      <div [ngSwitch]="ipSearchLoading">
-          <p *ngSwitchCase="true">UTC - 05:00</p>
-          <p *ngSwitchCase="false">...</p>
-          <p *ngSwitchDefault?>n/a</p>
-      </div>
+
+      <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
+      <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
+      <p *ngIf="!ipSearchLoading && ipInfoReady">UTC - 05:00</p>
     </div>
     <div class="ip-info-tile">
       <h2>ISP</h2>
-      <div [ngSwitch]="ipSearchLoading">
-          <p *ngSwitchCase="true">SpaceX Starlink</p>
-          <p *ngSwitchCase="false">...</p>
-          <p *ngSwitchDefault?>n/a</p>
-      </div>
+
+      <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
+      <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
+      <p *ngIf="!ipSearchLoading && ipInfoReady">SpaceX Starlink</p>
     </div>
   </div>
 </div>

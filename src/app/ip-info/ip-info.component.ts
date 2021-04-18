@@ -9,9 +9,11 @@ export class IpInfoComponent implements OnInit, OnChanges {
 
   constructor() {
     this.ipSearchLoading = false;
+    this.ipInfoReady = false;
   }
 
   @Input() ipSearchLoading: boolean;
+  @Input() ipInfoReady: boolean;
 
   ngOnInit(): void {
   }
