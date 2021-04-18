@@ -8,21 +8,36 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 export class IpSearchComponent implements OnInit {
 
   testClick() {
-    console.log("btn clicked");
-    this.emitStart();
+    if(this.ipSearchLoading === false) {
+      console.log("btn clicked");
+      this.emitStart();
+    }
   }
 
   constructor() {
-    this.nowLoading = false;
+    this.ipSearchLoading = false;
+    this.ipInfoReady = false;
   }
 
-  @Input() nowLoading: boolean;
+  @Input() ipSearchLoading: boolean;
+  @Input() ipInfoReady: boolean;
 
   @Output() startEmitTest: EventEmitter<boolean> = new EventEmitter();
+  @Output() ipInfoReadyStatusChange: EventEmitter<boolean> = new EventEmitter();
 
   emitStart() {
-    this.nowLoading = true;
-    this.startEmitTest.emit(this.nowLoading);
+    this.ipSearchLoading = true;
+    this.startEmitTest.emit(this.ipSearchLoading);
+
+    setTimeout(() => {
+      console.log("~~~ Ip Info Test Loaded ~~~");
+
+      this.ipInfoReady = true;
+      this.ipInfoReadyStatusChange.emit(this.ipInfoReady);
+
+      this.ipSearchLoading = false;
+      this.startEmitTest.emit(this.ipSearchLoading);
+    }, 3000);
   }
 
   ngOnInit(): void {
