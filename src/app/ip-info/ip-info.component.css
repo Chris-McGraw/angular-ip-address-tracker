@@ -128,13 +128,23 @@
     position: relative;
     top: 0px;
 
-    font-size: 9.75px;   /* 75% */
+    height: 25.75px;
+
+    font-size: 9.75px;  /* 75% */
     font-weight: 700;
   }
 
   .ip-info-tile p {
     top: 0;
 
+    height: 37.75px;
+
     font-size: 19.5px;  /* 75% */
+    text-align: center;
+  }
+
+  .loading-spinner::after {
+    width: 15px;        /* 75% */
+    height: 15px;       /* 75% */
   }
 }
