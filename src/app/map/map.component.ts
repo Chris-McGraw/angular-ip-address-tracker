@@ -27,18 +27,6 @@ export class MapComponent implements AfterViewInit {
     //   icon: posIcon
     // }).addTo(map);
 
-//     setTimeout(() => {
-//       map.setView([47.622868, -122.336553], 12);
-//     }, 3000);
-//
-//     setTimeout(() => {
-//       map.setView([47.622868, -122.336553], 7);
-//     }, 4000);
-//
-//     setTimeout(() => {
-//       map.setView([47.622868, -122.336553], 2);
-//     }, 5000);
-
 // ---
 
     setTimeout(() => {
