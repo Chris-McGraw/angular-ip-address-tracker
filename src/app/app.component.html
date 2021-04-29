@@ -3,7 +3,7 @@
     <h1 id="main-header">IP Address Tracker</h1>
     <app-ip-search [ipSearchLoading]=ipSearchLoading [ipInfoReady]=ipInfoReady
     (startEmitTest)="startEmitTestHandler($event)" (ipInfoReadyStatusChange)="ipInfoReadyStatusChangeHandler($event)"></app-ip-search>
-    <app-ip-info [ipSearchLoading]=ipSearchLoading [ipInfoReady]=ipInfoReady></app-ip-info>
+    <app-ip-info [ipSearchLoading]=ipSearchLoading [ipInfoReady]=ipInfoReady [ipInfo]=ipInfo></app-ip-info>
   </div>
 
   <app-map></app-map>
