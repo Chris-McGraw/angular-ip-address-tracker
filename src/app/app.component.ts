@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { GeoIpApiService } from './geoIpApi.service';
+import { IpSearchLoadingService } from './ipSearchLoading.service';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +11,19 @@ import { GeoIpApiService } from './geoIpApi.service';
 
 export class AppComponent implements OnInit {
   title = 'Angular IP Address Tracker';
-  ipSearchLoading:boolean = false;
+  ipSearchLoading:boolean;
   ipInfoReady:boolean = false;
 
-  geoIpApiService;                      //  INITIALIZE SERVICE
+  constructor(private geoIpApiService: GeoIpApiService, private ipSearchLoadingService: IpSearchLoadingService ) {
+    this.ipSearchLoading = ipSearchLoadingService.ipSearchLoading;
 
-  constructor(private http: HttpClient) {
-    this.geoIpApiService = new GeoIpApiService(http);
-  }
-
-  getReposTest() {
-    this.geoIpApiService.getReposTest();
+    ipSearchLoadingService.statusChange.subscribe((value) => {
+      this.ipSearchLoading = value;
+    });
   }
 
   ngOnInit() {
-    // this.getReposTest();
+    // this.geoIpApiService.getApiResponse();
   }
 
   startEmitTestHandler(ipSearchLoading: boolean) {
