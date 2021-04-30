@@ -5,28 +5,32 @@
 
       <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
       <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
-      <p *ngIf="!ipSearchLoading && ipInfoReady">192.212.174.101</p>
+      <!-- <p *ngIf="!ipSearchLoading && ipInfoReady">192.212.174.101</p> -->
+      <p *ngIf="!ipSearchLoading && ipInfoReady">{{ ipAddress }}</p>
     </div>
     <div class="ip-info-tile">
       <h2>Location</h2>
 
       <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
       <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
-      <p *ngIf="!ipSearchLoading && ipInfoReady">Brooklyn, NY 10001</p>
+      <!-- <p *ngIf="!ipSearchLoading && ipInfoReady">Brooklyn, NY 10001</p> -->
+      <p *ngIf="!ipSearchLoading && ipInfoReady">{{ ipLocation }}</p>
     </div>
     <div class="ip-info-tile">
       <h2>Timezone</h2>
 
       <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
       <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
-      <p *ngIf="!ipSearchLoading && ipInfoReady">UTC - 05:00</p>
+      <!-- <p *ngIf="!ipSearchLoading && ipInfoReady">UTC - 05:00</p> -->
+      <p *ngIf="!ipSearchLoading && ipInfoReady">UTC {{ ipTimezone }}</p>
     </div>
     <div class="ip-info-tile">
       <h2>ISP</h2>
 
       <p *ngIf="!ipSearchLoading && !ipInfoReady">...</p>
       <p *ngIf="ipSearchLoading" class="loading-spinner"></p>
-      <p *ngIf="!ipSearchLoading && ipInfoReady">SpaceX Starlink</p>
+      <!-- <p *ngIf="!ipSearchLoading && ipInfoReady">SpaceX Starlink</p> -->
+      <p *ngIf="!ipSearchLoading && ipInfoReady">{{ ipISP }}</p>
     </div>
   </div>
 </div>

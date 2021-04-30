@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { GeoIpApiService } from './geoIpApi.service';
+import { IpSearchLoadingService } from './ipSearchLoading.service';
+import { IpInfoService } from './ipInfo.service';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +12,36 @@ import { GeoIpApiService } from './geoIpApi.service';
 
 export class AppComponent implements OnInit {
   title = 'Angular IP Address Tracker';
-  ipSearchLoading:boolean = false;
-  ipInfoReady:boolean = false;
+  ipSearchLoading:boolean;
+  ipInfoReady:boolean;
+  ipInfo:Array<string>;
 
-  geoIpApiService;                      //  INITIALIZE SERVICE
+  constructor(private geoIpApiService: GeoIpApiService, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService ) {
+    this.ipSearchLoading = ipSearchLoadingService.ipSearchLoading;
 
-  constructor(private http: HttpClient) {
-    this.geoIpApiService = new GeoIpApiService(http);
-  }
+    ipSearchLoadingService.statusChange.subscribe((value) => {
+      this.ipSearchLoading = value;
+    });
 
-  getReposTest() {
-    this.geoIpApiService.getReposTest();
+// ---
+
+    this.ipInfoReady = ipInfoService.ipInfoReady;
+
+    ipInfoService.statusChange.subscribe((value) => {
+      this.ipInfoReady = value;
+    });
+
+// ---
+
+    this.ipInfo = ipInfoService.ipInfo;
+
+    ipInfoService.infoArrayChange.subscribe((value) => {
+      this.ipInfo = value;
+    });
   }
 
   ngOnInit() {
-    // this.getReposTest();
+    // this.geoIpApiService.getApiResponse();
   }
 
   startEmitTestHandler(ipSearchLoading: boolean) {

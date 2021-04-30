@@ -1,11 +1,19 @@
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { IpSearchLoadingService } from './ipSearchLoading.service';
+import { IpInfoService } from './ipInfo.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class GeoIpApiService {
   repos: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService) {}
 
-  public getReposTest() {
+  public getApiResponse() {
     return this.http.get<any>("/api/v1?apiKey=at_X1Ezn8mUNtuyM9PAe9IGUKObF9iI4&ipAddress=")
       .subscribe(
         (response) => {                           //Next callback
@@ -22,9 +30,10 @@ export class GeoIpApiService {
           console.log('Request completed');
 
           var data = JSON.parse(JSON.stringify(this.repos));
-          console.log(data["ip"]);
 
-          // this.ipSearchLoading = false;
+          this.ipSearchLoadingService.setStatusReady();
+          this.ipInfoService.setNewIpInfo(data);
+          this.ipInfoService.setStatusReady();
       })
   }
 }
