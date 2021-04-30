@@ -31,7 +31,8 @@ export class IpInfoComponent implements OnInit, OnChanges {
         // console.log('Current:', changes[prop].currentValue);
         // console.log('firstChange:', changes[prop].firstChange);
 
-        if(changes[prop].currentValue !== undefined && Object.keys(changes[prop].currentValue).length >= 1) {
+        if(changes[prop].currentValue !== undefined
+        && Object.keys(changes[prop].currentValue).length >= 1) {
           this.ipAddress = changes[prop].currentValue["ip"];
           this.ipLocation = changes[prop].currentValue["location"].city + ", " +
                             changes[prop].currentValue["location"].region + " " +
