@@ -7,8 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 })
 export class IpSearchComponent implements OnInit {
 
-  testClick() {
+  ipSearchBtnClick() {
     if(this.ipSearchLoading === false) {
+      console.log("");
       console.log("btn clicked");
       this.emitStart();
     }
@@ -22,12 +23,12 @@ export class IpSearchComponent implements OnInit {
   @Input() ipSearchLoading: boolean;
   @Input() ipInfoReady: boolean;
 
-  @Output() startEmitTest: EventEmitter<boolean> = new EventEmitter();
+  @Output() ipSearchLoadingStatusChange: EventEmitter<boolean> = new EventEmitter();
   @Output() ipInfoReadyStatusChange: EventEmitter<boolean> = new EventEmitter();
 
   emitStart() {
     this.ipSearchLoading = true;
-    this.startEmitTest.emit(this.ipSearchLoading);
+    this.ipSearchLoadingStatusChange.emit(this.ipSearchLoading);
 
     setTimeout(() => {
       console.log("~~~ Ip Info Test Loaded ~~~");
@@ -36,7 +37,7 @@ export class IpSearchComponent implements OnInit {
       this.ipInfoReadyStatusChange.emit(this.ipInfoReady);
 
       this.ipSearchLoading = false;
-      this.startEmitTest.emit(this.ipSearchLoading);
+      this.ipSearchLoadingStatusChange.emit(this.ipSearchLoading);
     }, 3000);
   }
 
