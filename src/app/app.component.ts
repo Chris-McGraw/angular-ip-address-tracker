@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     // this.geoIpApiService.getApiResponse();
   }
 
-  startEmitTestHandler(ipSearchLoading: boolean) {
+  ipSearchLoadingStatusChangeHandler(ipSearchLoading: boolean) {
     this.ipSearchLoading = ipSearchLoading;
   }
 

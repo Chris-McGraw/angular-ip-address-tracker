@@ -1,6 +1,8 @@
-<div id="ip-search-container">
+<form id="ip-search-form" onsubmit="return false;">
   <input id="ip-search-input" name="ip-search-input" type="text"
   placeholder="Search for any IP address or domain" aria-label="IP search input" />
 
-  <button id="ip-search-button" aria-label="IP search button" (click)="testClick()"></button>
-</div>
+  <button id="ip-search-button" aria-label="IP search button" (click)="ipSearchBtnClick($event)"></button>
+</form>
+
+<p id="error-msg" *ngIf="ipSearchError">Please enter a valid IP or domain address</p>

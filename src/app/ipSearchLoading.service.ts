@@ -10,7 +10,8 @@ export class IpSearchLoadingService {
   statusChange: Subject<boolean> = new Subject<boolean>();
 
   constructor() {
-    this.ipSearchLoading = true;
+    // this.ipSearchLoading = true;
+    this.ipSearchLoading = false;
   }
 
   setStatusReady() {
