@@ -13,8 +13,21 @@ export class GeoIpApiService {
 
   constructor(private http: HttpClient, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService) {}
 
-  public getApiResponse() {
-    return this.http.get<any>("/api/v1?apiKey=at_X1Ezn8mUNtuyM9PAe9IGUKObF9iI4&ipAddress=")
+  public getApiResponse(input?:string, type?:string) {
+    let apiKey:string = "at_X1Ezn8mUNtuyM9PAe9IGUKObF9iI4";
+    let apiUrl:string = "";
+
+    if(input && type === "ip") {
+      apiUrl = "/api/v1?apiKey=" + apiKey + "&ipAddress=" + input;
+    }
+    else if(input && type === "domain") {
+      apiUrl = "/api/v1?apiKey=" + apiKey + "&domain=" + input;
+    }
+    else {
+      apiUrl = "/api/v1?apiKey=" + apiKey;
+    }
+
+    return this.http.get<any>(apiUrl)
       .subscribe(
         (response) => {                           //Next callback
           console.log('response received');

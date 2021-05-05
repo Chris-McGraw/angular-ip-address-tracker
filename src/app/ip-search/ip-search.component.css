@@ -1,4 +1,4 @@
-#ip-search-container {
+#ip-search-form {
   display: grid;
   grid-template-columns: 1fr 58px;
 
@@ -59,11 +59,25 @@
   cursor: pointer;
 }
 
+#error-msg {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+
+  width: 555px;
+  margin: auto;
+
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(0, 87%, 67%);
+}
 
 
 /* ------------------------ MEDIA QUERY WIDTH < 800 ------------------------ */
 @media screen and (max-width: 799px) {
-  #ip-search-container {
+  #ip-search-form {
     top: 85.5px;    /* 90% */
 
     width: 327px;
