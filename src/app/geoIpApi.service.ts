@@ -39,7 +39,7 @@ export class GeoIpApiService {
           console.error('Request failed with error');
           console.log(error);
 
-          this.ipSearchLoadingService.setStatusReady();
+          this.ipSearchLoadingService.setStatus(false);
           this.ipInfoService.setStatus(false);
         },
         () => {                                   //Complete callback
@@ -47,7 +47,7 @@ export class GeoIpApiService {
 
           var data = JSON.parse(JSON.stringify(this.repos));
 
-          this.ipSearchLoadingService.setStatusReady();
+          this.ipSearchLoadingService.setStatus(false);
           this.ipInfoService.setNewIpInfo(data);
           this.ipInfoService.setStatus(true);
       })
