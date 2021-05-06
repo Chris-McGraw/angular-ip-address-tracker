@@ -5,4 +5,4 @@
   <button id="ip-search-button" aria-label="IP search button" (click)="ipSearchBtnClick($event)"></button>
 </form>
 
-<p id="error-msg" *ngIf="ipSearchError">Please enter a valid IP or domain address</p>
+<p id="error-msg" *ngIf="ipError">{{ ipErrorMsg }}</p>

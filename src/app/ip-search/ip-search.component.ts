@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 
 import { GeoIpApiService } from '../geoIpApi.service';
+import { IpErrorService } from '../ipError.service';
 
 @Component({
   selector: 'app-ip-search',
@@ -9,19 +10,19 @@ import { GeoIpApiService } from '../geoIpApi.service';
 })
 
 export class IpSearchComponent implements OnInit {
-  /* ------ VARIABLES ------ */
-  ipSearchError: boolean = false;
-
   /* ------- INPUTS ------- */
   @Input() ipSearchLoading: boolean = false;
   @Input() ipInfoReady: boolean = false;
+  @Input() ipError: boolean = false;
+  @Input() ipErrorMsg: string = "";
 
   /* ------- OUTPUTS ------- */
   @Output() ipSearchLoadingStatusChange: EventEmitter<boolean> = new EventEmitter();
   @Output() ipInfoReadyStatusChange: EventEmitter<boolean> = new EventEmitter();
 
   /* ----- CONSTRUCTOR ----- */
-  constructor(private geoIpApiService: GeoIpApiService) {}
+  constructor(private geoIpApiService: GeoIpApiService,
+  private ipErrorService: IpErrorService) {}
 
   /* ------ FUNCTIONS ------ */
   validateIpAddress(address:string) {
@@ -51,19 +52,20 @@ export class IpSearchComponent implements OnInit {
       console.log("btn clicked");
 
       if(this.validateIpAddress(event.target.parentElement.children[0].value) ) {
-        this.ipSearchError = false;
+        this.ipErrorService.setStatus(false);
         this.emitStart();
 
         // this.geoIpApiService.getApiResponse( event.target.parentElement.children[0].value, "ip" );
       }
       else if(this.validateDomainAddress(event.target.parentElement.children[0].value)) {
-        this.ipSearchError = false;
+        this.ipErrorService.setStatus(false);
         this.emitStart();
 
         // this.geoIpApiService.getApiResponse( event.target.parentElement.children[0].value, "domain" );
       }
       else {
-        this.ipSearchError = true;
+        this.ipErrorService.setStatus(true);
+        this.ipErrorService.setErrorMsg("Please enter a valid IP or domain address");
       }
     }
   }

@@ -2,7 +2,8 @@
   <div id="background-img-container">
     <h1 id="main-header">IP Address Tracker</h1>
     <app-ip-search [ipSearchLoading]=ipSearchLoading [ipInfoReady]=ipInfoReady
-    (ipSearchLoadingStatusChange)="ipSearchLoadingStatusChangeHandler($event)" (ipInfoReadyStatusChange)="ipInfoReadyStatusChangeHandler($event)"></app-ip-search>
+    (ipSearchLoadingStatusChange)="ipSearchLoadingStatusChangeHandler($event)" (ipInfoReadyStatusChange)="ipInfoReadyStatusChangeHandler($event)"
+    [ipError]=ipError [ipErrorMsg]=ipErrorMsg></app-ip-search>
     <app-ip-info [ipSearchLoading]=ipSearchLoading [ipInfoReady]=ipInfoReady [ipInfo]=ipInfo></app-ip-info>
   </div>
 
