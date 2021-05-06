@@ -11,11 +11,13 @@ import { IpInfoService } from './ipInfo.service';
 })
 
 export class AppComponent implements OnInit {
+  /* ------ VARIABLES ------ */
   title = 'Angular IP Address Tracker';
   ipSearchLoading:boolean;
   ipInfoReady:boolean;
   ipInfo:Array<string>;
 
+  /* ----- CONSTRUCTOR ----- */
   constructor(private geoIpApiService: GeoIpApiService, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService ) {
     this.ipSearchLoading = ipSearchLoadingService.ipSearchLoading;
 
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
       this.ipSearchLoading = value;
     });
 
-// ---
+    // ---
 
     this.ipInfoReady = ipInfoService.ipInfoReady;
 
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
       this.ipInfoReady = value;
     });
 
-// ---
+    // ---
 
     this.ipInfo = ipInfoService.ipInfo;
 
@@ -40,10 +42,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // this.geoIpApiService.getApiResponse();
-  }
-
+  /* ------ FUNCTIONS ------ */
   ipSearchLoadingStatusChangeHandler(ipSearchLoading: boolean) {
     this.ipSearchLoading = ipSearchLoading;
   }
@@ -51,4 +50,10 @@ export class AppComponent implements OnInit {
   ipInfoReadyStatusChangeHandler(ipInfoReady: boolean) {
     this.ipInfoReady = ipInfoReady;
   }
+
+  /* --- EVENT HANDLERS --- */
+  ngOnInit() {
+    // this.geoIpApiService.getApiResponse();
+  }
+
 }

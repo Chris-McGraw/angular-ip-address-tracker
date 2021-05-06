@@ -14,9 +14,9 @@ export class IpSearchLoadingService {
     this.ipSearchLoading = false;
   }
 
-  setStatusReady() {
-    this.ipSearchLoading = false;
-    // console.log("ipSearchLoading = " + this.ipSearchLoading);
+  setStatus(status:boolean) {
+    this.ipSearchLoading = status;
     this.statusChange.next(this.ipSearchLoading);
+    // console.log("ipSearchLoading = " + this.ipSearchLoading);
   }
 }

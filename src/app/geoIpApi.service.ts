@@ -38,15 +38,18 @@ export class GeoIpApiService {
         (error) => {                              //Error callback
           console.error('Request failed with error');
           console.log(error);
+
+          this.ipSearchLoadingService.setStatus(false);
+          this.ipInfoService.setStatus(false);
         },
         () => {                                   //Complete callback
           console.log('Request completed');
 
           var data = JSON.parse(JSON.stringify(this.repos));
 
-          this.ipSearchLoadingService.setStatusReady();
+          this.ipSearchLoadingService.setStatus(false);
           this.ipInfoService.setNewIpInfo(data);
-          this.ipInfoService.setStatusReady();
+          this.ipInfoService.setStatus(true);
       })
   }
 }
