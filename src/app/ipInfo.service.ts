@@ -17,8 +17,8 @@ export class IpInfoService {
     this.ipInfo = [];
   }
 
-  setStatusReady() {
-    this.ipInfoReady = true;
+  setStatus(status:boolean) {
+    this.ipInfoReady = status;
     this.statusChange.next(this.ipInfoReady);
     // console.log("ipInfoReady = " + this.ipInfoReady);
   }

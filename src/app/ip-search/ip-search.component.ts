@@ -9,8 +9,21 @@ import { GeoIpApiService } from '../geoIpApi.service';
 })
 
 export class IpSearchComponent implements OnInit {
+  /* ------ VARIABLES ------ */
   ipSearchError: boolean = false;
 
+  /* ------- INPUTS ------- */
+  @Input() ipSearchLoading: boolean = false;
+  @Input() ipInfoReady: boolean = false;
+
+  /* ------- OUTPUTS ------- */
+  @Output() ipSearchLoadingStatusChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() ipInfoReadyStatusChange: EventEmitter<boolean> = new EventEmitter();
+
+  /* ----- CONSTRUCTOR ----- */
+  constructor(private geoIpApiService: GeoIpApiService) {}
+
+  /* ------ FUNCTIONS ------ */
   validateIpAddress(address:string) {
     let regexp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
     if (regexp.test(address)) {
@@ -55,17 +68,6 @@ export class IpSearchComponent implements OnInit {
     }
   }
 
-  constructor(private geoIpApiService: GeoIpApiService) {
-    this.ipSearchLoading = false;
-    this.ipInfoReady = false;
-  }
-
-  @Input() ipSearchLoading: boolean;
-  @Input() ipInfoReady: boolean;
-
-  @Output() ipSearchLoadingStatusChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() ipInfoReadyStatusChange: EventEmitter<boolean> = new EventEmitter();
-
   emitStart() {
     this.ipSearchLoading = true;
     this.ipSearchLoadingStatusChange.emit(this.ipSearchLoading);
@@ -81,7 +83,7 @@ export class IpSearchComponent implements OnInit {
     // }, 3000);
   }
 
-  ngOnInit(): void {
-  }
+  /* --- EVENT HANDLERS --- */
+  ngOnInit() {}
 
 }
