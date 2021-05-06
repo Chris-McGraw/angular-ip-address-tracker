@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GeoIpApiService } from './geoIpApi.service';
 import { IpSearchLoadingService } from './ipSearchLoading.service';
 import { IpInfoService } from './ipInfo.service';
+import { IpErrorService } from './ipError.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,14 @@ export class AppComponent implements OnInit {
   ipSearchLoading:boolean;
   ipInfoReady:boolean;
   ipInfo:Array<string>;
+  ipError:boolean;
+  ipErrorMsg:string;
 
   /* ----- CONSTRUCTOR ----- */
-  constructor(private geoIpApiService: GeoIpApiService, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService ) {
+  constructor(private geoIpApiService: GeoIpApiService,
+  private ipSearchLoadingService: IpSearchLoadingService,
+  private ipInfoService: IpInfoService,
+  private ipErrorService: IpErrorService) {
     this.ipSearchLoading = ipSearchLoadingService.ipSearchLoading;
 
     ipSearchLoadingService.statusChange.subscribe((value) => {
@@ -39,6 +45,22 @@ export class AppComponent implements OnInit {
 
     ipInfoService.infoArrayChange.subscribe((value) => {
       this.ipInfo = value;
+    });
+
+    // ---
+
+    this.ipError = ipErrorService.ipError;
+
+    ipErrorService.statusChange.subscribe((value) => {
+      this.ipError = value;
+    });
+
+    // ---
+
+    this.ipErrorMsg = ipErrorService.ipErrorMsg;
+
+    ipErrorService.msgChange.subscribe((value) => {
+      this.ipErrorMsg = value;
     });
   }
 

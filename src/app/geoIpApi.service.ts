@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { IpSearchLoadingService } from './ipSearchLoading.service';
 import { IpInfoService } from './ipInfo.service';
+import { IpErrorService } from './ipError.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ import { IpInfoService } from './ipInfo.service';
 export class GeoIpApiService {
   repos: any[] = [];
 
-  constructor(private http: HttpClient, private ipSearchLoadingService: IpSearchLoadingService, private ipInfoService: IpInfoService) {}
+  constructor(private http: HttpClient,
+  private ipSearchLoadingService: IpSearchLoadingService,
+  private ipInfoService: IpInfoService,
+  private ipErrorService: IpErrorService) {}
 
   public getApiResponse(input?:string, type?:string) {
     let apiKey:string = "at_X1Ezn8mUNtuyM9PAe9IGUKObF9iI4";
@@ -37,10 +41,12 @@ export class GeoIpApiService {
         },
         (error) => {                              //Error callback
           console.error('Request failed with error');
-          console.log(error);
+          // console.log(error);
 
           this.ipSearchLoadingService.setStatus(false);
           this.ipInfoService.setStatus(false);
+          this.ipErrorService.setStatus(true);
+          this.ipErrorService.setErrorMsg(error.status + " - " + error.statusText);
         },
         () => {                                   //Complete callback
           console.log('Request completed');
